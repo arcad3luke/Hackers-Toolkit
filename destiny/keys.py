@@ -6,5 +6,6 @@ keys = {
     'zdkey': '',
     'msfuser': '',
     'msfpass': '',
-    'vtapikey': ''
+    'vtapikey': '',
+    'zap_key': ''
 }
