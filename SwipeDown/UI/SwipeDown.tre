@@ -1,0 +1,112 @@
+PAGE
+    Toplevel: Toplevel 0
+        Labelframe: Labelframe1  
+            Label: Label1  
+            Label: Label2  
+            Button: Button1   command: import time
+import bs4
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+soup = bs4.BeautifulSoup()
+
+def scrape(count):
+
+    driver.get("https://www.google.com/")
+    search = driver.find_element(by=By.NAME, value='q')
+    result = search.send_keys("inurl: 'index of /admin'")
+    search.send_keys(Keys.ENTER)
+    matches = soup.find_all(result)
+    len_match = len(matches)
+
+    time.sleep(300)
+    driver.quit()
+    with open('./scraping.txt', 'a+') as f:
+        for i in matches:
+            f.write(str(count) + '.' + i + '\n')
+            f.write("There were " + str(len_match) + " matches found for your keyword:\n")
+        f.close()
+
+go = scrape(count=1)
+            Label: Label3  
+            Button: Button2   command: def sqlInject():
+    """"
+    learn sql injection and make a script for it. 
+    import encodings
+
+import requests
+
+
+# import SwipeDown.SwipeDown.swipedown as sd
+from sqlmap import sqlmap
+
+# @TODO
+# 1.) Make the script search the page for a login form
+# 2.) Make the script scan the login form for vuln(s)
+# 3.) Make the script attempt to authenticate using forms
+# 4.) Add JS login prompt() scanner to expand reach
+# 5.) Integrate with SwipeDown
+
+
+def sql():
+    # requests.get(url, params={key: value}, args) # Basic get request syntax
+    url = input('Enter a URL (don\'t worry about the https part):')  # QoL feature
+    r = requests.get(f'https://{url}')
+    if r.encoding != encodings.utf_8:
+        print('''Encoding not utf-8!\nWe don\'t support this yet, but it\'s a work in progress!''')
+        print(f'Encoding: {r.encoding}')
+    else:
+        if r.is_redirect:  # If we get a 301, check and see if we want to follow the link.
+            print(f'{r} is not the final destination, continue? (Y/N)')
+            if '%s'.upper() == 'Y' or 'YES':
+                # Return the HTTP status, the reason for the redirect,
+                # the kind of encoding used, and output to json
+                print(r.ok, '\n', r.reason, r.encoding, r.json())  # @TODO WIP
+            else:
+                print(r, f'Status: {r.status_code}')
+        else:  # Main chunk of injection script.
+            try:
+                input(f'{r} seems normal, continue? (Y/N)')
+                if '%s'.upper() == 'Y':
+                    print(r.ok, r.encoding, r.headers)
+                    sqlmap.crawl(r.url)
+
+            except KeyboardInterrupt:
+                print('Keyboard broke things, please restart.')
+
+
+if __name__ == '__main__':
+    sql()
+
+    
+    """
+sqlInject()
+            Label: Label4  
+            Button: Button3   command: class httpPollute:
+    """
+
+    @TODO
+    Learn HTTP Parameter Pollution and write a script.
+
+    """
+            Label: Label5  
+            Button: Button4   command: class cssInject:
+    """
+
+    @TODO
+    learn CSS Injection and create a script for it.
+    """
+
+
+    pass
+            Label: Label6  
+            Button: Button5  
+    Toplevel: Toplevel 1
+        Labelframe: ScrapeLog  
+

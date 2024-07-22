@@ -1,0 +1,19 @@
+{
+  "people": [
+    {
+      "name": "bob",
+      "age": 30,
+      "weight": 150
+    },
+    {
+      "name": "anna",
+      "age": 22,
+      "weight": 180
+    },
+    {
+      "name": "charles",
+      "age": 34,
+      "weight": 160
+    }
+  ]
+}
