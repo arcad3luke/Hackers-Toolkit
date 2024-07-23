@@ -1,5 +1,4 @@
 # destiny/WMAP/zap_scan.py
-from destiny.keys import *
 import requests
 
 ZAP_API_KEY = keys.keys['zap_key']  # Replace with your OWASP ZAP API key
